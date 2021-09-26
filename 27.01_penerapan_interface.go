@@ -1,52 +1,54 @@
 package main
 
-import "fmt"
-import "math"
+import (
+	"fmt"
+	"math"
+)
 
 type hitung interface {
-    luas() float64
-    keliling() float64
+	luas() float64
+	keliling() float64
 }
 
 type lingkaran struct {
-    diameter float64
+	diameter float64
 }
 
 func (l lingkaran) jariJari() float64 {
-    return l.diameter / 2
+	return l.diameter / 2
 }
 
 func (l lingkaran) luas() float64 {
-    return math.Pi * math.Pow(l.jariJari(), 2)
+	return math.Pi * math.Pow(l.jariJari(), 2)
 }
 
 func (l lingkaran) keliling() float64 {
-    return math.Pi * l.diameter
+	return math.Pi * l.diameter
 }
 
 type persegi struct {
-    sisi float64
+	sisi float64
 }
 
 func (p persegi) luas() float64 {
-    return math.Pow(p.sisi, 2)
+	return math.Pow(p.sisi, 2)
 }
 
 func (p persegi) keliling() float64 {
-    return p.sisi * 4
+	return p.sisi * 4
 }
 
 func main() {
-    var bangunDatar hitung
+	var bangunDatar hitung
 
-    bangunDatar = persegi{10.0}
-    fmt.Println("======= Persegi=========")
-    fmt.Println("luas\t:", bangunDatar.luas())
-    fmt.Println("Keliling\t:", bangunDatar.keliling())
+	bangunDatar = persegi{10.0}
+	fmt.Println("===== persegi")
+	fmt.Println("Luas\t\t:", bangunDatar.luas())
+	fmt.Println("Keliling\t:", bangunDatar.keliling())
 
-    bangunDatar = lingkaran{14.0}
-    fmt.Println("======= lingkaran =======")
-    fmt.Println("luas\t:", bangunDatar.luas())
-    fmt.Println("keliling\t:", bangunDatar.keliling())
-    fmt.Println("jari jari\t:", bangunDatar.(lingkaran).jariJari())
+	bangunDatar = lingkaran{14.0}
+	fmt.Println("===== Lingkaran")
+	fmt.Println("Luas\t\t:", bangunDatar.luas())
+	fmt.Println("Keliling\t:", bangunDatar.keliling())
+	fmt.Println("Jari-jari\t:", bangunDatar.(lingkaran).jariJari())
 }

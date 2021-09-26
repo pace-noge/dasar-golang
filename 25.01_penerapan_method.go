@@ -1,27 +1,27 @@
 package main
 
-import "fmt"
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
-
-type Student struct {
-    name string
-    grade int
+type student struct {
+	name  string
+	grade int
 }
 
-
-func (s Student) sayHello() {
-    fmt.Println("halo", s.name)
+func (s student) sayHello() {
+	fmt.Println("halo", s.name)
 }
 
-func (s Student) getNameAt(i int) string {
-    return strings.Split(s.name, " ")[i-1]
+func (s student) getNameAt(i int) string {
+	return strings.Split(s.name, " ")[i-1]
 }
 
 func main() {
-    var s1 = Student{"John Wick", 21}
-    s1.sayHello()
+	var s1 = student{"john wick", 21}
+	s1.sayHello()
 
-    var name = s1.getNameAt(2)
-    fmt.Println("last name:", name)
+	var name = s1.getNameAt(2)
+	fmt.Println("name panggilan:", name)
 }
